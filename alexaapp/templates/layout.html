@@ -33,7 +33,7 @@
 
   <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -42,15 +42,16 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Alexa Voice App</a>
+          <a class="navbar-brand" href="/"><img src="/assets/images/sesame_logo.png" style="max-height:180%;top:-10px;position:relative"></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Voice Prints</a></li>
-			<li class="active"><a href="#">Orders</a></li>
-			<li class="active"><a href="#">Admin</a></li>
+            <li class="inactive"><a href="/enroll_user">Enroll Voice</a></li>
+      <li class="inactive"><a href="/payments">Activity</a></li>
+      <li class="inactive"><a href="/account">Admin</a></li>
 	    <li class="dropdown">
-	    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">email@address.com<span class="caret"></span></a>
+	    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Logged in as raneff@gmail.com
+      <span class="caret"></span></a>
 	    <ul class="dropdown-menu">
 		    <li><a href="#">Log out</a></li>
 	    </ul>
@@ -59,6 +60,7 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
+  <div class="container">
 	{% with messages = get_flashed_messages() %}
 	  {% if messages %}
 		<div class="alert alert-info" role="alert"><ul>
