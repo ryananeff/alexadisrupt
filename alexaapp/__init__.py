@@ -2,6 +2,7 @@ from flask import Flask, request, redirect, send_from_directory, Response, strea
 from requests.auth import HTTPBasicAuth
 from alexaapp.config import *
 from flask.ext.mail import Mail
+import flask.ext.login as flask_login
 
 #Flask init
 app = Flask(__name__, static_folder='')

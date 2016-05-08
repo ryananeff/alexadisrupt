@@ -1,3 +1,3 @@
 # config params
-sqlalchemy_db = "test.db"
+sqlalchemy_db = "sqlite:///test.db"
 flask_secret_key = "lololololololol"
