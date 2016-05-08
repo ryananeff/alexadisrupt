@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+{% block body %}
+    <div class="container">
+	
+	{% import '_forms.html' as forms %}
+
+	{% block form %}
+  <div class="jumbotron" style="text-align:center">
+	<section>
+	<h3>{{ action }} {{ data_type }}</h3>
+  <h3><small>Please say: </small></h3>
+  <h3>{{ phrase }}</h3>
+  <br><br>
+	<form action="{{ form_action }}" method="{{ method | d("POST") }}" enctype="multipart/form-data">
+	<fieldset class="form-group">
+  {% for field in form %}
+  {% if field.type in ['CSRFTokenField', 'HiddenField'] %}
+    {{ field() }}
+  {% else %}
+    <div class="clearfix {% if field.errors %}error{% endif %}">
+      {{ field.label }}
+      <div class="input">
+        {% if field.name == "body" %}
+          {{ field(rows=10, cols=40) }}
+        {% elif field.name == "audio_file" %}
+          <span class="input-grp-btn">
+          <span class="btn btn-primary btn-file">
+          Record Audio / Browse...
+          <input type="file" accept="audio/*" capture="microphone" class="form-control" id="audio_file" name="audio_file">
+          </span>
+          </span>
+        {% else %}
+          <div class="row">
+            <div class="col-xs-6">
+                  {{ field(class="form-control") }}
+            </div>
+          </div>
+        {% endif %}
+        {% if field.errors or field.help_text %}
+          <span class="help-inline">
+          {% if field.errors %}
+            {{ field.errors|join(' ') }}
+          {% else %}
+            {{ field.help_text }}
+          {% endif %}
+          </span>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+  {% endfor %}
+  </fieldset>
+  <br><br>
+	<input type="submit" value="Submit">
+	</form>
+	</section>
+  </div>
+  <div class="row">
+  <p>{{ response }}
+  </div>
+	{% endblock form %}    
+	
+    </div><!-- /.container -->
+
+{% endblock %}
